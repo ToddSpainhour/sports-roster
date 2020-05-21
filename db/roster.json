@@ -39,7 +39,7 @@
 		"imageUrl": "https://colorado-mp7static.mlsdigital.net/styles/image_player_headshot_small/s3/IRWIN_Clint.jpg?06aRYT4SPJMgz0oLRacPr8EfzX80SlxC&itok=7Rc5X5Oz",
 		"name": "Clint Irwin",
 		"position": "Goalkeeper",
-		"uid": ""
+		"uid": "12345"
   },
   "player8": {
 		"imageUrl": "https://colorado-mp7static.mlsdigital.net/styles/image_player_headshot_small/s3/JACKSON_Niki.jpg?dZgRVlZHvHkB17Ngr22X_NZM7VXICs.D&itok=5oOosaL1",
@@ -60,8 +60,8 @@
 		"uid": "IYWoKm2vAIMqeIYMAQGQUPOTOZi2"
   },
   "player11": {
-		"imageUrl": "Jack Price",
-		"name": "https://colorado-mp7static.mlsdigital.net/styles/image_player_headshot_small/s3/PRICE_Jack.jpg?jcRI4ovhhShwXamB8mjBA_szl7izjjNY&itok=bqvx36bR",
+		"imageUrl": "https://colorado-mp7static.mlsdigital.net/styles/image_player_headshot_small/s3/PRICE_Jack.jpg?jcRI4ovhhShwXamB8mjBA_szl7izjjNY&itok=bqvx36bR",
+		"name": "Jack Price",
 		"position": "Midfielder",
 		"uid": "IYWoKm2vAIMqeIYMAQGQUPOTOZi2"
   },
