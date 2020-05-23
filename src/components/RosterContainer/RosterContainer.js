@@ -11,16 +11,28 @@ state = {
   roster: [],
 }
 
-componentDidMount() {
+
+getInfo = () => {
   rosterData.getRosterByUid(authData.getUid())
     .then((roster) => this.setState({ roster }))
     .catch((err) => console.error('unable to get roster', err));
-  console.error('inside your componentDidMount in RosterContainer');
 }
+
+componentDidMount() {
+  this.getInfo();
+}
+
+
+removePlayer = (playerId) => {
+  rosterData.deletePlayer(playerId)
+    .then(() => this.getInfo())
+    .catch((err) => console.error('cannot delete player;', err));
+}
+
 
 render() {
   const { roster } = this.state;
-  const makeRoster = roster.map((player) => <Roster key={player.id} roster={player} />); // having player or roster could cause issues...
+  const makeRoster = roster.map((player) => <Roster key={player.id} roster={player} removePlayer={this.removePlayer}/>);
 
   return (
     <div className="RosterContainer">
