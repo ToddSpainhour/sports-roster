@@ -11,6 +11,9 @@ class RosterContainer extends React.Component {
 state = {
   roster: [],
   CreatePlayerFormVisible: false,
+  userEnteredPlayerName: '',
+  userEnteredPlayerPosition: '',
+  userEnteredPlayerImage: '',
 }
 
 
