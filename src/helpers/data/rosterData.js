@@ -25,5 +25,6 @@ const getRosterByUid = (uid) => new Promise((resolve, reject) => {
 
 const deletePlayer = (rosterId) => axios.delete(`${baseUrl}/roster/${rosterId}.json`); // this playerId might cause issues
 
+const savePlayer = (newPlayer) => axios.post(`${baseUrl}/roster.json`, newPlayer);
 
-export default { getRosterByUid, deletePlayer };
+export default { getRosterByUid, deletePlayer, savePlayer };

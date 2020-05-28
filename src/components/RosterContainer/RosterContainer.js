@@ -34,6 +34,15 @@ removePlayer = (playerId) => {
     .catch((err) => console.error('cannot delete player;', err));
 }
 
+saveNewPlayer = (newPlayer) => {
+  rosterData.savePlayer(newPlayer)
+    .then(() => {
+      this.getInfo();
+      this.setState({ CreatePlayerFormVisible: false });
+    })
+    .catch((err) => console.error('cannot save new player', err));
+}
+
 
 render() {
   const { roster, CreatePlayerFormVisible } = this.state;
@@ -42,7 +51,7 @@ render() {
   return (
     <div className="RosterContainer">
       <button className="btn btn-dark add-player-button" onClick={() => this.setState({ CreatePlayerFormVisible: true }) }>Add Player</button>
-      { CreatePlayerFormVisible ? <CreatePlayerForm /> : '' }
+      { CreatePlayerFormVisible ? <CreatePlayerForm saveNewPlayer={this.saveNewPlayer}/> : '' }
       <div className="d-flex flex-wrap">
         {makeRoster}
       </div>

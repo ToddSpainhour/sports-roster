@@ -1,10 +1,16 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import authData from '../../helpers/data/authData';
 
 import './CreatePlayerForm.scss';
 
 class CreatePlayerForm extends React.Component {
+  static propTypes = {
+    saveNewPlayer: PropTypes.func.isRequired,
+
+  }
+
   state = {
     userEnteredPlayerName: '',
     userEnteredPlayerPosition: '',
@@ -31,13 +37,14 @@ playerImageChange = (e) => {
 savePlayer = (e) => {
   e.preventDefault();
   const { userEnteredPlayerName, userEnteredPlayerPosition, userEnteredPlayerImage } = this.state;
+  const { saveNewPlayer } = this.props;
   const newPlayer = {
     imageUrl: userEnteredPlayerImage,
     name: userEnteredPlayerName,
     position: userEnteredPlayerPosition,
     uid: authData.getUid(),
   };
-  console.error('your new player object looks like this... ', newPlayer);
+  saveNewPlayer(newPlayer);
 }
 
 render() {
