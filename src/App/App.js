@@ -8,6 +8,7 @@ import MyNavbar from '../components/MyNavbar/MyNavbar';
 import RosterContainer from '../components/RosterContainer/RosterContainer';
 import Auth from '../components/Auth/Auth';
 
+
 import './App.scss';
 
 fbConnection();
