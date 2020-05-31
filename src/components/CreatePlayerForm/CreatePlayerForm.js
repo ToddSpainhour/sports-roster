@@ -15,7 +15,22 @@ class CreatePlayerForm extends React.Component {
     userEnteredPlayerName: '',
     userEnteredPlayerPosition: '',
     userEnteredPlayerImage: '',
+    isEditing: false,
   }
+
+  componentDidMount() {
+    const { player } = this.props;
+    console.error('player', player);
+    if (player.name) {
+      this.setState({
+        userEnteredPlayerName: player.name,
+        userEnteredPlayerPosition: player.position,
+        userEnteredPlayerImage: player.imageUrl,
+        isEditing: true,
+      });
+    }
+  }
+
 
 playerNameChange = (e) => {
   e.preventDefault();

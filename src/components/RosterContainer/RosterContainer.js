@@ -9,6 +9,7 @@ import CreatePlayerForm from '../CreatePlayerForm/CreatePlayerForm';
 
 class RosterContainer extends React.Component {
 state = {
+  editAPlayer: {},
   roster: [],
   CreatePlayerFormVisible: false,
   userEnteredPlayerName: '',
@@ -43,15 +44,20 @@ saveNewPlayer = (newPlayer) => {
     .catch((err) => console.error('cannot save new player', err));
 }
 
+editAPlayer = (player) => {
+  this.setState({ CreatePlayerFormVisible: true, editAPlayer: player });
+  console.error('you just ran your editAPlayer function inside RosterContainer');
+}
+
 
 render() {
   const { roster, CreatePlayerFormVisible } = this.state;
-  const makeRoster = roster.map((player) => <Player key={player.id} roster={player} removePlayer={this.removePlayer}/>);
+  const makeRoster = roster.map((player) => <Player key={player.id} player={player} removePlayer={this.removePlayer} editAPlayer={this.editAPlayer}/>);
 
   return (
     <div className="RosterContainer">
       <button className="btn btn-dark add-player-button" onClick={() => this.setState({ CreatePlayerFormVisible: true }) }>Add Player</button>
-      { CreatePlayerFormVisible ? <CreatePlayerForm saveNewPlayer={this.saveNewPlayer}/> : '' }
+      { CreatePlayerFormVisible ? <CreatePlayerForm saveNewPlayer={this.saveNewPlayer} player={this.editAPlayer} /> : '' }
       <div className="d-flex flex-wrap">
         {makeRoster}
       </div>
