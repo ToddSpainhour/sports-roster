@@ -4,7 +4,7 @@ import './RosterContainer.scss';
 import rosterData from '../../helpers/data/rosterData';
 import authData from '../../helpers/data/authData';
 
-import Roster from '../Roster/Roster';
+import Player from '../Player/Player';
 import CreatePlayerForm from '../CreatePlayerForm/CreatePlayerForm';
 
 class RosterContainer extends React.Component {
@@ -46,7 +46,7 @@ saveNewPlayer = (newPlayer) => {
 
 render() {
   const { roster, CreatePlayerFormVisible } = this.state;
-  const makeRoster = roster.map((player) => <Roster key={player.id} roster={player} removePlayer={this.removePlayer}/>);
+  const makeRoster = roster.map((player) => <Player key={player.id} roster={player} removePlayer={this.removePlayer}/>);
 
   return (
     <div className="RosterContainer">

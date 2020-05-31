@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './Roster.scss';
+import './Player.scss';
 import rosterShape from '../../helpers/propz/rosterShape';
 
-class Roster extends React.Component {
+class Player extends React.Component {
   static propTypes = {
     roster: rosterShape.rosterShape,
     removePlayer: PropTypes.func.isRequired,
@@ -24,7 +24,7 @@ class Roster extends React.Component {
     const { roster } = this.props;
 
     return (
-<div className="Roster col-2">
+<div className="Player col-2">
   <div className="card">
     <div className="card-body">
       <img className="card-img-top portrait" src={roster.imageUrl} alt="Team Portrait" />
@@ -39,4 +39,4 @@ class Roster extends React.Component {
   }
 }
 
-export default Roster;
+export default Player;
