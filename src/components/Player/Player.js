@@ -7,6 +7,7 @@ class Player extends React.Component {
   static propTypes = {
     roster: rosterShape.rosterShape,
     removePlayer: PropTypes.func.isRequired,
+    editAPlayer: PropTypes.func.isRequired,
   }
 
   deletePlayerEvent = (e) => {
@@ -15,11 +16,10 @@ class Player extends React.Component {
     removePlayer(roster.id);
   }
 
-  updatePlayerEvent = (e) => {
+  editPlayerEvent = (e) => {
     e.preventDefault();
     const { editAPlayer, player } = this.props;
     editAPlayer(player);
-    console.error('you just fired off your updatePlayerEvent in Player.js. This calls the editAPlayer function...');
   }
 
   render() {
@@ -33,7 +33,7 @@ class Player extends React.Component {
       <h5 className='card-title'>{player.name}</h5>
       <h5 className='card-text'>{player.position}</h5>
       <button className="btn btn-dark" onClick={this.deletePlayerEvent}><i className="fas fa-user-minus"></i></button>
-      <button className="btn btn-dark" onClick={this.updatePlayerEvent}><i className="far fa-edit"></i></button>
+      <button className="btn btn-dark" onClick={this.editPlayerEvent}><i className="far fa-edit"></i></button>
     </div>
   </div>
 </div>
