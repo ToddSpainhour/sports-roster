@@ -12,8 +12,8 @@ class Player extends React.Component {
 
   deletePlayerEvent = (e) => {
     // console.log('you just deleted a player');
-    const { roster, removePlayer } = this.props;
-    removePlayer(roster.id);
+    const { player, removePlayer } = this.props;
+    removePlayer(player.id);
   }
 
   editPlayerEvent = (e) => {
