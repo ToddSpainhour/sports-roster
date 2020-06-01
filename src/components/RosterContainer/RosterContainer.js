@@ -9,6 +9,7 @@ import CreatePlayerForm from '../CreatePlayerForm/CreatePlayerForm';
 
 class RosterContainer extends React.Component {
 state = {
+  editPlayer: {},
   roster: [],
   CreatePlayerFormVisible: false,
   userEnteredPlayerName: '',
@@ -43,15 +44,29 @@ saveNewPlayer = (newPlayer) => {
     .catch((err) => console.error('cannot save new player', err));
 }
 
+editAPlayer = (player) => {
+  this.setState({ CreatePlayerFormVisible: true, editPlayer: player });
+}
+
+putPlayer = (playerId, updatedPlayer) => {
+  console.error('your putPlayer function just fired');
+  rosterData.updatePlayer(playerId, updatedPlayer)
+    .then(() => {
+      this.getInfo();
+      this.setState({ CreatePlayerFormVisible: false, editPlayer: {} });
+    })
+    .catch((err) => console.error('unable to update player', err));
+}
+
 
 render() {
-  const { roster, CreatePlayerFormVisible } = this.state;
-  const makeRoster = roster.map((player) => <Player key={player.id} roster={player} removePlayer={this.removePlayer}/>);
+  const { roster, CreatePlayerFormVisible, editPlayer } = this.state;
+  const makeRoster = roster.map((player) => <Player key={player.id} player={player} removePlayer={this.removePlayer} editAPlayer={this.editAPlayer}/>);
 
   return (
     <div className="RosterContainer">
       <button className="btn btn-dark add-player-button" onClick={() => this.setState({ CreatePlayerFormVisible: true }) }>Add Player</button>
-      { CreatePlayerFormVisible ? <CreatePlayerForm saveNewPlayer={this.saveNewPlayer}/> : '' }
+      { CreatePlayerFormVisible ? <CreatePlayerForm saveNewPlayer={this.saveNewPlayer} player={editPlayer} putPlayer={this.putPlayer} /> : '' }
       <div className="d-flex flex-wrap">
         {makeRoster}
       </div>

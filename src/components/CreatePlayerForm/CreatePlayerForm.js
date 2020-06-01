@@ -15,7 +15,21 @@ class CreatePlayerForm extends React.Component {
     userEnteredPlayerName: '',
     userEnteredPlayerPosition: '',
     userEnteredPlayerImage: '',
+    isEditing: false,
   }
+
+  componentDidMount() {
+    const { player } = this.props;
+    if (player.name) {
+      this.setState({
+        userEnteredPlayerName: player.name,
+        userEnteredPlayerPosition: player.position,
+        userEnteredPlayerImage: player.imageUrl,
+        isEditing: true,
+      });
+    }
+  }
+
 
 playerNameChange = (e) => {
   e.preventDefault();
@@ -47,8 +61,27 @@ savePlayer = (e) => {
   saveNewPlayer(newPlayer);
 }
 
-render() {
+updatePlayer = (e) => {
+  e.preventDefault();
+  const { player, putPlayer } = this.props;
   const { userEnteredPlayerName, userEnteredPlayerPosition, userEnteredPlayerImage } = this.state;
+  const updatedPlayer = {
+    name: userEnteredPlayerName,
+    position: userEnteredPlayerPosition,
+    imageUrl: userEnteredPlayerImage,
+    uid: authData.getUid(),
+  };
+  putPlayer(player.id, updatedPlayer);
+}
+
+
+render() {
+  const {
+    userEnteredPlayerName,
+    userEnteredPlayerPosition,
+    userEnteredPlayerImage,
+    isEditing,
+  } = this.state;
 
   return (
 
@@ -88,7 +121,11 @@ render() {
               onChange={this.playerImageChange}
             />
         </div>
-<button className="btn btn-dark" onClick={this.savePlayer}>Save New Player</button>
+        {
+          isEditing
+            ? <button className="btn btn-dark" onClick={this.updatePlayer}>Update Player</button>
+            : <button className="btn btn-dark" onClick={this.savePlayer}>Save New Player</button>
+}
 </form>
   );
 }
