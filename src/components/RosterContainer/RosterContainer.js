@@ -53,7 +53,7 @@ putPlayer = (playerId, updatedPlayer) => {
   rosterData.updatePlayer(playerId, updatedPlayer)
     .then(() => {
       this.getInfo();
-      this.setState({ formOpen: false, editPlayer: {} });
+      this.setState({ CreatePlayerFormVisible: false, editPlayer: {} });
     })
     .catch((err) => console.error('unable to update player', err));
 }
