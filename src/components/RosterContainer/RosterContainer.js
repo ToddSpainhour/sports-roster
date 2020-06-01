@@ -12,9 +12,6 @@ state = {
   editPlayer: {},
   roster: [],
   CreatePlayerFormVisible: false,
-  userEnteredPlayerName: '',
-  userEnteredPlayerPosition: '',
-  userEnteredPlayerImage: '',
 }
 
 
